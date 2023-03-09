@@ -13,8 +13,10 @@ public class Differ {
 
     public static String generate(File filepath1, File filepath2) throws Exception {
         final ObjectMapper mapper = new ObjectMapper();
-        final TreeMap<String, String> value1 = mapper.readValue(filepath1, new TypeReference<TreeMap<String,String>>(){});
-        final TreeMap<String, String> value2 = mapper.readValue(filepath2, new TypeReference<TreeMap<String,String>>(){});
+        final TreeMap<String, String> value1;
+        value1 = mapper.readValue(filepath1, new TypeReference<TreeMap<String,String>>(){});
+        final TreeMap<String, String> value2;
+        value2 = mapper.readValue(filepath2, new TypeReference<TreeMap<String,String>>(){});
         LinkedList<String> differernceList = new LinkedList<>();
 
         System.out.println("File content 1:\n" + value1);
