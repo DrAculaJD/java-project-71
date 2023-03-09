@@ -38,12 +38,9 @@ public class Differ {
             }
         }
 
-
         final String result = myToString(differernceList);
 
-        System.out.println("Differenses:");
         System.out.println(result);
-
         return result;
     }
 
