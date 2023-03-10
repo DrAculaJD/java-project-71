@@ -1,7 +1,6 @@
 package hexlet.code;
 
 import java.io.File;
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.TreeMap;
