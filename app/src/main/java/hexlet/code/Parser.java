@@ -20,21 +20,22 @@ public class Parser {
     private static TreeMap<String, String> parseJSON(File filepath) throws Exception {
         final ObjectMapper mapper = new ObjectMapper();
         final TreeMap<String, String> value;
-        value = mapper.readValue(filepath, new TypeReference<TreeMap<String, String>>() { });
+        value = mapper.readValue(filepath, new TypeReference<>() { });
         return value;
     }
 
     private static TreeMap<String, String> parseYML(File filepath) throws Exception {
         final ObjectMapper mapper = new YAMLMapper();
         final TreeMap<String, String> value;
-        value = mapper.readValue(filepath, new TypeReference<TreeMap<String, String>>() { });
+        value = mapper.readValue(filepath, new TypeReference<>() { });
         return value;
     }
 
     private static String getFileExtension(File file) {
         String fileName = file.getName();
-        if(fileName.lastIndexOf(".") != -1 && fileName.lastIndexOf(".") != 0)
-            return fileName.substring(fileName.lastIndexOf(".")+1);
-        else return "";
+        if (fileName.lastIndexOf(".") != -1 && fileName.lastIndexOf(".") != 0) {
+            return fileName.substring(fileName.lastIndexOf(".") + 1);
+        }
+        return "";
     }
 }
