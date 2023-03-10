@@ -7,13 +7,7 @@ import java.io.File;
 
 public class Tests {
 
-    @Test
-    public void sourceTest() throws Exception {
-
-        final File filepath1 = new File("./src/test/resources/testFile1.json");
-        final File filepath2 = new File("./src/test/resources/testFile2.json");
-
-        final String result = """
+    private final String trueResult = """
                 {
                   - follow: false
                     host: hexlet.io
@@ -23,7 +17,22 @@ public class Tests {
                   + verbose: true
                 }""";
 
-        assertEquals(result, Differ.generate(filepath1, filepath2));
+    @Test
+    public void jsonFilesTest() throws Exception {
+
+        final File filepath1 = new File("./src/test/resources/testFile1.json");
+        final File filepath2 = new File("./src/test/resources/testFile2.json");
+
+        assertEquals(trueResult, Differ.generate(filepath1, filepath2));
+    }
+
+    @Test
+    public void ymlFilesTest() throws Exception {
+
+        final File filepath1 = new File("./src/test/resources/testFile1.yml");
+        final File filepath2 = new File("./src/test/resources/testFile2.yml");
+
+        assertEquals(trueResult, Differ.generate(filepath1, filepath2));
     }
 
     @Test
