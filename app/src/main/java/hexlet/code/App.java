@@ -14,13 +14,13 @@ import java.util.concurrent.Callable;
 public class App implements Callable<Integer> {
 
     @Parameters(index = "0", description = "path to first file")
-    private File filepath1;
+    public File filepath1;
 
     @Parameters(index = "1", description = "path to second file")
-    private File filepath2;
+    public File filepath2;
 
     @Option(names = {"-f", "--format"}, description = "output format [default: stylish]")
-    private final String format = "stylish";
+    public final String format = "stylish";
 
     @Override
     public Integer call() throws Exception {
