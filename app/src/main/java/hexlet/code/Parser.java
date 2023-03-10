@@ -9,7 +9,7 @@ import java.util.TreeMap;
 
 public class Parser {
 
-    public static TreeMap<String, String> parse(File filepath) throws Exception {
+    public static TreeMap<String, Object> parse(File filepath) throws Exception {
         if (getFileExtension(filepath).equals("json")) {
             return parseJSON(filepath);
         }
@@ -17,16 +17,16 @@ public class Parser {
         return parseYML(filepath);
     }
 
-    private static TreeMap<String, String> parseJSON(File filepath) throws Exception {
+    private static TreeMap<String, Object> parseJSON(File filepath) throws Exception {
         final ObjectMapper mapper = new ObjectMapper();
-        final TreeMap<String, String> value;
+        final TreeMap<String, Object> value;
         value = mapper.readValue(filepath, new TypeReference<>() { });
         return value;
     }
 
-    private static TreeMap<String, String> parseYML(File filepath) throws Exception {
+    private static TreeMap<String, Object> parseYML(File filepath) throws Exception {
         final ObjectMapper mapper = new YAMLMapper();
-        final TreeMap<String, String> value;
+        final TreeMap<String, Object> value;
         value = mapper.readValue(filepath, new TypeReference<>() { });
         return value;
     }
