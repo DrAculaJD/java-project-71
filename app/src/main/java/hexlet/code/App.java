@@ -20,7 +20,7 @@ public class App implements Callable<Integer> {
     private File filepath2;
 
     @Option(names = {"-f", "--format"}, description = "output format [default: stylish]")
-    private String format = "stylish";
+    private final String format = "stylish";
 
     @Override
     public Integer call() throws Exception {

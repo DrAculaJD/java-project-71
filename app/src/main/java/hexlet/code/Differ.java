@@ -14,9 +14,9 @@ public class Differ {
     public static String generate(File filepath1, File filepath2) throws Exception {
         final ObjectMapper mapper = new ObjectMapper();
         final TreeMap<String, String> value1;
-        value1 = mapper.readValue(filepath1, new TypeReference<TreeMap<String,String>>(){});
+        value1 = mapper.readValue(filepath1, new TypeReference<TreeMap<String, String>>() { });
         final TreeMap<String, String> value2;
-        value2 = mapper.readValue(filepath2, new TypeReference<TreeMap<String,String>>(){});
+        value2 = mapper.readValue(filepath2, new TypeReference<TreeMap<String, String>>() { });
         LinkedList<String> differernceList = new LinkedList<>();
 
         System.out.println("File content 1:\n" + value1);
@@ -25,7 +25,7 @@ public class Differ {
         TreeSet<String> setKeys = new TreeSet<>(value1.keySet());
         setKeys.addAll(value2.keySet());
 
-        for (final String key: setKeys){
+        for (final String key: setKeys) {
             if (value2.containsKey(key) && value1.containsKey(key)) {
                 if (value2.get(key).equals(value1.get(key))) {
                     differernceList.add("  " + key + ": " + value1.get(key));
@@ -47,14 +47,14 @@ public class Differ {
     }
 
     public static String myToString(List<String> differernceList) {
-        String result = "{\n";
+        StringBuilder result = new StringBuilder("{\n");
 
         for (String str: differernceList) {
-            result += "  " + str + "\n";
+            result.append("  ").append(str).append("\n");
         }
 
-        result += "}";
+        result.append("}");
 
-        return result;
+        return result.toString();
     }
 }
