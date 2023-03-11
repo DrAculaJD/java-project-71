@@ -7,7 +7,7 @@ import java.io.File;
 
 public class Tests {
 
-    private final String trueResult = """
+    private final String trueStylishResult = """
             {
                  chars1: [a, b, c]
                - chars2: [d, e, f]
@@ -34,26 +34,50 @@ public class Tests {
                + setting3: none
             }""";
 
+    private final String truePlainResult = """
+            Property 'chars2' was updated. From [complex value] to false
+            Property 'checked' was updated. From false to true
+            Property 'default' was updated. From null to [complex value]
+            Property 'id' was updated. From 45 to null
+            Property 'key1' was removed
+            Property 'key2' was added with value: 'value2'
+            Property 'numbers2' was updated. From [complex value] to [complex value]
+            Property 'numbers3' was removed
+            Property 'numbers4' was added with value: [complex value]
+            Property 'obj1' was added with value: [complex value]
+            Property 'setting1' was updated. From 'Some value' to 'Another value'
+            Property 'setting2' was updated. From 200 to 300
+            Property 'setting3' was updated. From true to 'none'""";
+
     @Test
-    public void jsonFilesTest() throws Exception {
+    public void jsonFilesStylishTest() throws Exception {
 
         final File filepath1 = new File("./src/test/resources/testFile1.json");
         final File filepath2 = new File("./src/test/resources/testFile2.json");
 
-        assertEquals(trueResult, Differ.generate(filepath1, filepath2));
+        assertEquals(trueStylishResult, Differ.generate(filepath1, filepath2, "stylish"));
     }
 
     @Test
-    public void ymlFilesTest() throws Exception {
+    public void jsonFilesPlainTest() throws Exception {
+
+        final File filepath1 = new File("./src/test/resources/testFile1.json");
+        final File filepath2 = new File("./src/test/resources/testFile2.json");
+
+        assertEquals(truePlainResult, Differ.generate(filepath1, filepath2, "plain"));
+    }
+
+    @Test
+    public void ymlFilesStylishTest() throws Exception {
 
         final File filepath1 = new File("./src/test/resources/testFile1.yml");
         final File filepath2 = new File("./src/test/resources/testFile2.yml");
 
-        assertEquals(trueResult, Differ.generate(filepath1, filepath2));
+        assertEquals(trueStylishResult, Differ.generate(filepath1, filepath2, "stylish"));
     }
 
     @Test
-    public void oneEmptyFileTest() throws Exception {
+    public void oneEmptyFileStylishTest() throws Exception {
 
         final File filepath1 = new File("./src/test/resources/testFile1.json");
         final File filepath2 = new File("./src/test/resources/emptyTestFile.json");
@@ -74,6 +98,6 @@ public class Tests {
                    - setting3: true
                 }""";
 
-        assertEquals(result, Differ.generate(filepath1, filepath2));
+        assertEquals(result, Differ.generate(filepath1, filepath2, "stylish"));
     }
 }
