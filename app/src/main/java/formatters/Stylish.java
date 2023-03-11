@@ -17,15 +17,15 @@ public class Stylish {
 
             if (value2.containsKey(key) && value1.containsKey(key)) {
                 if (valOne.equals(valTwo)) {
-                    result.append("     ").append(key).append(": ").append(valOne).append("\n");
+                    result.append("    ").append(key).append(": ").append(valOne).append("\n");
                 } else {
-                    result.append("   - ").append(key).append(": ").append(valOne).append("\n");
-                    result.append("   + ").append(key).append(": ").append(valTwo).append("\n");
+                    result.append("  - ").append(key).append(": ").append(valOne).append("\n");
+                    result.append("  + ").append(key).append(": ").append(valTwo).append("\n");
                 }
             } else if (!value1.containsKey(key)) {
-                result.append("   + ").append(key).append(": ").append(valTwo).append("\n");
+                result.append("  + ").append(key).append(": ").append(valTwo).append("\n");
             } else if (!value2.containsKey(key)) {
-                result.append("   - ").append(key).append(": ").append(valOne).append("\n");
+                result.append("  - ").append(key).append(": ").append(valOne).append("\n");
             }
         }
 
