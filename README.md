@@ -15,3 +15,6 @@ https://asciinema.org/a/566360
 
 ## Step 9 Asciinema:
 https://asciinema.org/a/566439
+
+## Step 10 Asciinema:
+https://asciinema.org/a/566508
