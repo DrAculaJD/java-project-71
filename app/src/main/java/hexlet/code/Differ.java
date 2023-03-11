@@ -9,11 +9,6 @@ import java.util.TreeMap;
 
 public class Differ {
 
-    public static String generate(String filepath1, String filepath2) throws Exception {
-        final String defaultFormat = "stylish";
-        return generate(filepath1, filepath2, defaultFormat);
-    }
-
     public static String generate(String filepath1, String filepath2, String format) throws Exception {
 
         final String firstFileAbsolutePath = checkIsFileExistThenToAbsolutePath(filepath1);
@@ -21,9 +16,6 @@ public class Differ {
 
         final TreeMap<String, Object> value1 = Parser.parse(firstFileAbsolutePath, filepath1);
         final TreeMap<String, Object> value2 = Parser.parse(secondFileAbsolutePath, filepath2);
-
-        System.out.println("File content 1:\n" + value1);
-        System.out.println("File content 2:\n" + value2 + "\n");
 
         final String result = Formatter.makeFormat(value1, value2, format);
 
