@@ -3,8 +3,6 @@ package hexlet.code;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.io.File;
-
 public class StylishTests {
 
     private final String trueStylishResult = """
@@ -37,8 +35,8 @@ public class StylishTests {
     @Test
     public void jsonFilesStylishTest() throws Exception {
 
-        final File filepath1 = new File("./src/test/resources/testFile1.json");
-        final File filepath2 = new File("./src/test/resources/testFile2.json");
+        final String filepath1 = "./src/test/resources/testFile1.json";
+        final String filepath2 = "./src/test/resources/testFile2.json";
 
         assertEquals(trueStylishResult, Differ.generate(filepath1, filepath2, "stylish"));
     }
@@ -46,8 +44,8 @@ public class StylishTests {
     @Test
     public void ymlFilesStylishTest() throws Exception {
 
-        final File filepath1 = new File("./src/test/resources/testFile1.yml");
-        final File filepath2 = new File("./src/test/resources/testFile2.yml");
+        final String filepath1 = "./src/test/resources/testFile1.yml";
+        final String filepath2 = "./src/test/resources/testFile2.yml";
 
         assertEquals(trueStylishResult, Differ.generate(filepath1, filepath2, "stylish"));
     }
@@ -55,8 +53,8 @@ public class StylishTests {
     @Test
     public void oneEmptyFileStylishTest() throws Exception {
 
-        final File filepath1 = new File("./src/test/resources/testFile1.json");
-        final File filepath2 = new File("./src/test/resources/emptyTestFile.json");
+        final String filepath1 = "./src/test/resources/testFile1.json";
+        final String filepath2 = "./src/test/resources/emptyTestFile.json";
 
         final String result = """
                 {

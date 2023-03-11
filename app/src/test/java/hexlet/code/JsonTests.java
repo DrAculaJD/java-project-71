@@ -2,7 +2,6 @@ package hexlet.code;
 
 import org.junit.jupiter.api.Test;
 
-import java.io.File;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class JsonTests {
@@ -19,8 +18,8 @@ public class JsonTests {
     @Test
     public void jsonFormatTest() throws Exception {
 
-        final File filepath1 = new File("./src/test/resources/testFile1.json");
-        final File filepath2 = new File("./src/test/resources/testFile2.json");
+        final String filepath1 = "./src/test/resources/testFile1.json";
+        final String filepath2 = "./src/test/resources/testFile2.json";
 
         assertEquals(trueJsonResult, Differ.generate(filepath1, filepath2, "json"));
     }

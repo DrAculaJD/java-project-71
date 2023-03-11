@@ -3,8 +3,6 @@ package hexlet.code;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.io.File;
-
 public class PlainTests {
 
     private final String truePlainResult = """
@@ -25,8 +23,8 @@ public class PlainTests {
     @Test
     public void jsonFilesPlainTest() throws Exception {
 
-        final File filepath1 = new File("./src/test/resources/testFile1.json");
-        final File filepath2 = new File("./src/test/resources/testFile2.json");
+        final String filepath1 = "./src/test/resources/testFile1.json";
+        final String filepath2 = "./src/test/resources/testFile2.json";
 
         assertEquals(truePlainResult, Differ.generate(filepath1, filepath2, "plain"));
     }
@@ -34,8 +32,8 @@ public class PlainTests {
     @Test
     public void ymlFilesPlainTest() throws Exception {
 
-        final File filepath1 = new File("./src/test/resources/testFile1.yml");
-        final File filepath2 = new File("./src/test/resources/testFile2.yml");
+        final String filepath1 = "./src/test/resources/testFile1.yml";
+        final String filepath2 = "./src/test/resources/testFile2.yml";
 
         assertEquals(truePlainResult, Differ.generate(filepath1, filepath2, "plain"));
     }

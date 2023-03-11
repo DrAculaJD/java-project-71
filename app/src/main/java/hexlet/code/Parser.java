@@ -4,40 +4,42 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
 
-import java.io.File;
 import java.util.TreeMap;
 
 public class Parser {
 
-    public static TreeMap<String, Object> parse(File filepath) throws Exception {
-        if (getFileExtension(filepath).equals("json")) {
-            return parseJSON(filepath);
-        } else if (getFileExtension(filepath).equals("yml") || getFileExtension(filepath).equals("yaml")) {
-            return parseYML(filepath);
+    public static final String[] FILE_EXTENSIONS = {"json", "yml", "yaml"};
+
+    public static TreeMap<String, Object> parse(String fileAbsolutePath, String filepath) throws Exception {
+        if (findFileExtension(filepath).equals("json")) {
+            return parseJSON(fileAbsolutePath);
+        } else if (findFileExtension(filepath).equals("yml") || findFileExtension(filepath).equals("yaml")) {
+            return parseYML(fileAbsolutePath);
         } else {
             throw new Exception("Please, use formats: .json, .yml, .yaml");
         }
     }
 
-    private static TreeMap<String, Object> parseJSON(File filepath) throws Exception {
+    private static TreeMap<String, Object> parseJSON(String filepath) throws Exception {
         final ObjectMapper mapper = new ObjectMapper();
         final TreeMap<String, Object> value;
         value = mapper.readValue(filepath, new TypeReference<>() { });
         return value;
     }
 
-    private static TreeMap<String, Object> parseYML(File filepath) throws Exception {
+    private static TreeMap<String, Object> parseYML(String filepath) throws Exception {
         final ObjectMapper mapper = new YAMLMapper();
         final TreeMap<String, Object> value;
         value = mapper.readValue(filepath, new TypeReference<>() { });
         return value;
     }
 
-    private static String getFileExtension(File file) {
-        String fileName = file.getName();
-        if (fileName.lastIndexOf(".") != -1 && fileName.lastIndexOf(".") != 0) {
-            return fileName.substring(fileName.lastIndexOf(".") + 1);
+    private static String findFileExtension(String filePath) {
+        String fileExtension = filePath.substring(filePath.lastIndexOf('.') + 1).toLowerCase();
+
+        if (fileExtension.equals(FILE_EXTENSIONS[2])) {
+            return FILE_EXTENSIONS[1];
         }
-        return "";
+        return fileExtension;
     }
 }
