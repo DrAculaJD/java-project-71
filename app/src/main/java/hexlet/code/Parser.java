@@ -12,9 +12,11 @@ public class Parser {
     public static TreeMap<String, Object> parse(File filepath) throws Exception {
         if (getFileExtension(filepath).equals("json")) {
             return parseJSON(filepath);
+        } else if (getFileExtension(filepath).equals("yml") || getFileExtension(filepath).equals("yaml")) {
+            return parseYML(filepath);
+        } else {
+            throw new Exception("Please, use formats: .json, .yml, .yaml");
         }
-
-        return parseYML(filepath);
     }
 
     private static TreeMap<String, Object> parseJSON(File filepath) throws Exception {
