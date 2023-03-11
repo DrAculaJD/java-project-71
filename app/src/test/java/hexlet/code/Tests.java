@@ -67,6 +67,15 @@ public class Tests {
         assertEquals(truePlainResult, Differ.generate(filepath1, filepath2, "plain"));
     }
 
+//    @Test
+//    public void jsonFormatTest() throws Exception {
+//
+//        final File filepath1 = new File("./src/test/resources/testFile1.json");
+//        final File filepath2 = new File("./src/test/resources/testFile2.json");
+//
+//        assertEquals(truePlainResult, Differ.generate(filepath1, filepath2, "json"));
+//    }
+
     @Test
     public void ymlFilesStylishTest() throws Exception {
 

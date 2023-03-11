@@ -1,5 +1,6 @@
 package hexlet.code;
 
+import formatters.Json;
 import formatters.Plain;
 import formatters.Stylish;
 
@@ -15,6 +16,8 @@ public class Formatter {
             result = Plain.format(value1, value2);
         } else if (format.equals("stylish")) {
             result = Stylish.format(value1, value2);
+        } else if (format.equals("json")) {
+            result = Json.format(value1, value2);
         } else {
             throw new Exception("There is unknown output format.\nCheck it!");
         }
