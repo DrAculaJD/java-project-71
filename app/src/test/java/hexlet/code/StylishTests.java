@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.File;
 
-public class Tests {
+public class StylishTests {
 
     private final String trueStylishResult = """
             {
@@ -34,21 +34,6 @@ public class Tests {
                + setting3: none
             }""";
 
-    private final String truePlainResult = """
-            Property 'chars2' was updated. From [complex value] to false
-            Property 'checked' was updated. From false to true
-            Property 'default' was updated. From null to [complex value]
-            Property 'id' was updated. From 45 to null
-            Property 'key1' was removed
-            Property 'key2' was added with value: 'value2'
-            Property 'numbers2' was updated. From [complex value] to [complex value]
-            Property 'numbers3' was removed
-            Property 'numbers4' was added with value: [complex value]
-            Property 'obj1' was added with value: [complex value]
-            Property 'setting1' was updated. From 'Some value' to 'Another value'
-            Property 'setting2' was updated. From 200 to 300
-            Property 'setting3' was updated. From true to 'none'""";
-
     @Test
     public void jsonFilesStylishTest() throws Exception {
 
@@ -57,24 +42,6 @@ public class Tests {
 
         assertEquals(trueStylishResult, Differ.generate(filepath1, filepath2, "stylish"));
     }
-
-    @Test
-    public void jsonFilesPlainTest() throws Exception {
-
-        final File filepath1 = new File("./src/test/resources/testFile1.json");
-        final File filepath2 = new File("./src/test/resources/testFile2.json");
-
-        assertEquals(truePlainResult, Differ.generate(filepath1, filepath2, "plain"));
-    }
-
-//    @Test
-//    public void jsonFormatTest() throws Exception {
-//
-//        final File filepath1 = new File("./src/test/resources/testFile1.json");
-//        final File filepath2 = new File("./src/test/resources/testFile2.json");
-//
-//        assertEquals(truePlainResult, Differ.generate(filepath1, filepath2, "json"));
-//    }
 
     @Test
     public void ymlFilesStylishTest() throws Exception {

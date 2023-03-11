@@ -12,13 +12,13 @@ public class Plain {
         setKeys.addAll(value2.keySet());
 
         for (final String key: setKeys) {
-            final String comparisoValue1 = String.valueOf(value1.get(key));
-            final String comparisoValue2 = String.valueOf(value2.get(key));
+            final String compareValue1 = String.valueOf(value1.get(key));
+            final String compareValue2 = String.valueOf(value2.get(key));
             final String valOne = handlingValuesByType(value1.get(key));
             final String valTwo = handlingValuesByType(value2.get(key));
 
             if (value2.containsKey(key) && value1.containsKey(key)) {
-                if (!comparisoValue1.equals(comparisoValue2)) {
+                if (!compareValue1.equals(compareValue2)) {
                     result.append("Property '").append(key).append("' was updated. From ").append(valOne)
                             .append(" to ").append(valTwo).append("\n");
                 }
