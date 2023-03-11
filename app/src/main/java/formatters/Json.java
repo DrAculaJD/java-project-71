@@ -10,15 +10,11 @@ import java.util.TreeSet;
 
 public class Json {
 
-    public static String format(TreeMap<String, Object> value1, TreeMap<String, Object> value2)
-            throws JsonProcessingException {
+    public static String format(TreeMap<String, Object> value1, TreeMap<String, Object> value2,
+            TreeSet<String> setKeys) throws JsonProcessingException {
 
         final ObjectMapper mapper = new ObjectMapper();
-        final String json;
         Map<String, Object> result = new LinkedHashMap<>();
-
-        TreeSet<String> setKeys = new TreeSet<>(value1.keySet());
-        setKeys.addAll(value2.keySet());
 
         for (final String key: setKeys) {
             final String valOne = String.valueOf(value1.get(key));
@@ -38,7 +34,7 @@ public class Json {
             }
         }
 
-        json = mapper.writeValueAsString(result);
+        final String json = mapper.writeValueAsString(result);
         System.out.println(json);
 
         return json;

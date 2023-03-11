@@ -5,16 +5,17 @@ import formatters.Plain;
 import formatters.Stylish;
 
 import java.util.TreeMap;
+import java.util.TreeSet;
 
 public class Formatter {
 
-    public static String makeFormat(TreeMap<String, Object> value1, TreeMap<String, Object> value2, String format)
-            throws Exception {
+    public static String makeFormat(TreeMap<String, Object> value1, TreeMap<String, Object> value2,
+            String format, TreeSet<String> setKeys) throws Exception {
 
         return switch (format) {
-            case "plain" -> Plain.format(value1, value2);
-            case "stylish" -> Stylish.format(value1, value2);
-            case "json" -> Json.format(value1, value2);
+            case "plain" -> Plain.format(value1, value2, setKeys);
+            case "stylish" -> Stylish.format(value1, value2, setKeys);
+            case "json" -> Json.format(value1, value2, setKeys);
             default -> throw new Exception("There is unknown output format.\nCheck it!");
         };
     }

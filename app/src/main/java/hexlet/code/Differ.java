@@ -5,6 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.TreeMap;
+import java.util.TreeSet;
 
 
 public class Differ {
@@ -22,7 +23,10 @@ public class Differ {
         final TreeMap<String, Object> value1 = Parser.parse(firstFileAbsolutePath, filepath1);
         final TreeMap<String, Object> value2 = Parser.parse(secondFileAbsolutePath, filepath2);
 
-        final String result = Formatter.makeFormat(value1, value2, format);
+        TreeSet<String> setKeys = new TreeSet<>(value1.keySet());
+        setKeys.addAll(value2.keySet());
+
+        final String result = Formatter.makeFormat(value1, value2, format, setKeys);
 
         System.out.println(result);
         return result;

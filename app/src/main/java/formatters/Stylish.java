@@ -5,11 +5,9 @@ import java.util.TreeSet;
 
 public class Stylish {
 
-    public static String format(TreeMap<String, Object> value1, TreeMap<String, Object> value2) {
+    public static String format(TreeMap<String, Object> value1, TreeMap<String, Object> value2,
+                                TreeSet<String> setKeys) {
         StringBuilder result = new StringBuilder("{\n");
-
-        TreeSet<String> setKeys = new TreeSet<>(value1.keySet());
-        setKeys.addAll(value2.keySet());
 
         for (final String key: setKeys) {
             final String valOne = String.valueOf(value1.get(key));
