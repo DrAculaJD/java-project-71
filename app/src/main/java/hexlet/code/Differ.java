@@ -26,10 +26,7 @@ public class Differ {
         TreeSet<String> setKeys = new TreeSet<>(value1.keySet());
         setKeys.addAll(value2.keySet());
 
-        final String result = Formatter.makeFormat(value1, value2, format, setKeys);
-
-        System.out.println(result);
-        return result;
+        return Formatter.makeFormat(value1, value2, format, setKeys);
     }
 
     private static String checkIsFileExistThenToAbsolutePath(String filePath) throws IOException {
