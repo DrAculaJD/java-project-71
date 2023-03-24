@@ -27,7 +27,7 @@ public class Stylish {
             }
         }
 
-        System.out.println(result.append("}").toString());
+        System.out.println(result.toString() + "}");
         return result.append("}").toString();
     }
 
