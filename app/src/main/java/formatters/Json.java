@@ -31,6 +31,7 @@ public class Json {
             }
         }
 
+        System.out.println(MAPPER.writeValueAsString(result));
         return MAPPER.writeValueAsString(result);
     }
 

@@ -30,6 +30,7 @@ public class Plain {
             }
         }
 
+        System.out.println(result.substring(0, result.length() - 1));
         return result.substring(0, result.length() - 1);
     }
 
